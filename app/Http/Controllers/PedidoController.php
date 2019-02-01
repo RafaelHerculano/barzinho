@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Mesa;
+use Produto;
 
-class ProdutoController extends Controller
+class PedidoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +16,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos=\App\Produto::all();
-        return view('produtos/index',compact('produtos'));
+        $pedidos=\App\Pedido::all();
+        return view('pedidos/index',compact('pedidos'));
     }
 
     /**
@@ -24,7 +27,11 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produtos/create');    
+        $mesas = \App\Mesa::all();
+        $produtos = \App\Produto::all();
+        
+
+        return view('pedidos/create', compact('mesas', 'produtos'));
     }
 
     /**
@@ -35,13 +42,14 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $produto= new \App\Produto;
-        $produto->name=$request->get('name');
-        $produto->size=$request->get('size');
-        $produto->price=$request->get('price');  
-        $produto->save();
-        
-        return redirect('produtos')->with('success', "{$produto['name']} {$produto['size']} cadastrado");
+        $pedido = new \App\Pedido;
+        $pedido->mesa_id = $request->get('mesa_id');
+        $pedido->produto_id = $request->get('produto_id');
+        $pedido->mesa = $request->get('mesa');
+        $pedido->produto = $request->get('produto');
+
+        $pedido->save();
+        return redirect('pedidos')->with('success', "{$pedido['mesa']} {$produto['produto']} cadastrado");
     }
 
     /**
@@ -63,8 +71,7 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        $produto = \App\Produto::find($id);
-        return view('produtos/edit',compact('produto','id'));
+        //
     }
 
     /**
@@ -76,12 +83,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produto= \App\Produto::find($id);
-        $produto->name=$request->get('name');
-        $produto->size=$request->get('size');
-        $produto->price=$request->get('price');
-        $produto->save();
-        return redirect('produtos');
+        //
     }
 
     /**
@@ -92,7 +94,6 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        $produto = \App\Produto::find($id);
-        $produto->delete();
-        return redirect('produtos')->with('success',"{$produto['name']} {$produto['size']} deletado");    }
+        //
+    }
 }

@@ -9,21 +9,15 @@
   </head>
   <body>
     <div class="container">
-      <h2>Cadastrar Garçom</h2><br/>
-      <form method="post" action="{{url('garcoms')}}" enctype="multipart/form-data">
+      <h2>Mesas</h2><br/>
+      <form method="post" action="{{url('mesas')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
-            <label for="Name">Nome:</label>
-            <input type="text" class="form-control" name="name" required="">
+            <label for="Numero">Número:</label>
+            <input type="number" class="form-control" name="number" required="">
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="form-group col-md-4">
-            <input type="file" name="filename" required="">    
-         </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>

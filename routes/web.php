@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::resource('garcoms','GarcomController');
 Route::resource('produtos','ProdutoController');
+Route::resource('item_pedidos','Item_pedidoController');
+Route::resource('pedidos','PedidoController');
+Route::resource('mesas','MesaController');
 
 Auth::routes();
 

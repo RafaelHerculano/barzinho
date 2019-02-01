@@ -17,6 +17,9 @@ class CreatePedidosTable extends Migration
             $table->increments('id');
             $table->integer('mesa_id')->unsigned();
             $table->integer('garcom_id')->unsigned();
+            $table->integer('mesa');
+            $table->string('produto');
+
             $table->timestamps();
         });
 

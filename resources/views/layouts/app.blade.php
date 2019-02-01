@@ -53,6 +53,12 @@
                                 <a class="nav-link" href="{{ url('produtos') }}">Produtos</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('mesas') }}">Mesas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('pedidos') }}">Pedidos</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('garcoms') }}">Garçons</a>
                             </li>
                             <li class="nav-item dropdown">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class MesaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos=\App\Produto::all();
-        return view('produtos/index',compact('produtos'));
-    }
+        $mesas=\App\Mesa::all();
+        return view('mesas/index',compact('mesas'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -24,8 +23,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produtos/create');    
-    }
+        return view('mesas/create');    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,13 +33,11 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $produto= new \App\Produto;
-        $produto->name=$request->get('name');
-        $produto->size=$request->get('size');
-        $produto->price=$request->get('price');  
-        $produto->save();
+        $mesa= new \App\Mesa;
+        $mesa->number=$request->get('number');
+        $mesa->save();
         
-        return redirect('produtos')->with('success', "{$produto['name']} {$produto['size']} cadastrado");
+        return redirect('mesas')->with('success', 'Mesa cadastrada');
     }
 
     /**
@@ -63,9 +59,8 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        $produto = \App\Produto::find($id);
-        return view('produtos/edit',compact('produto','id'));
-    }
+        $mesa = \App\Mesa::find($id);
+        return view('mesas/edit',compact('mesa','id'));    }
 
     /**
      * Update the specified resource in storage.
@@ -76,13 +71,10 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produto= \App\Produto::find($id);
-        $produto->name=$request->get('name');
-        $produto->size=$request->get('size');
-        $produto->price=$request->get('price');
-        $produto->save();
-        return redirect('produtos');
-    }
+        $mesa= \App\Mesa::find($id);
+        $mesa->number=$request->get('number');
+        $mesa->save();
+        return redirect('mesas');    }
 
     /**
      * Remove the specified resource from storage.
@@ -92,7 +84,7 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        $produto = \App\Produto::find($id);
-        $produto->delete();
-        return redirect('produtos')->with('success',"{$produto['name']} {$produto['size']} deletado");    }
+        $mesa = \App\Mesa::find($id);
+        $mesa->delete();
+        return redirect('mesas')->with('success','Mesa deletada');    }
 }
