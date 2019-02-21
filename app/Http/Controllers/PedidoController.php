@@ -42,14 +42,12 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
+
         $pedido = new \App\Pedido;
         $pedido->mesa_id = $request->get('mesa_id');
         $pedido->produto_id = $request->get('produto_id');
-        $pedido->mesa = $request->get('mesa');
-        $pedido->produto = $request->get('produto');
-
         $pedido->save();
-        return redirect('pedidos')->with('success', "{$pedido['mesa']} {$produto['produto']} cadastrado");
+        return redirect('pedidos')->with('success', "{$pedido['mesa_id']} {$pedido['produto_id']} cadastrado");
     }
 
     /**

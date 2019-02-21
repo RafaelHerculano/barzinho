@@ -17,10 +17,10 @@
           <div class="col-md-2 offset-md-4">
             <div class="form-group">
                 <lable>Mesas:</lable>
-                <select name="mesa">
+                <select name="mesa_id">
                   <option value="nenhuma mesa selecionada">Número da mesa</option>
                   @foreach($mesas as $mesa)
-                    <option value="nenhuma mesa selecionada">{{$mesa['number']}}</option>
+                    <option value="{{$mesa['id']}}">{{$mesa['number']}}</option>
                   @endforeach
                 </select>
             </div>
@@ -28,10 +28,10 @@
           <div class="col-md-2">
             <div class="form-group">
                 <lable>Produtos:</lable>
-                <select name="produto">
+                <select name="produto_id">
                   <option value="nenhum produto selecionado">Número da produto</option>
                   @foreach($produtos as $produto)
-                    <option value="nenhuma produto selecionada">{{$produto['name']}} {{$produto['size']}}</option>
+                    <option value="{{$produto['id']}}">{{$produto['name']}} {{$produto['size']}}</option>
                   @endforeach
                 </select>
             </div>

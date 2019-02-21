@@ -30,8 +30,8 @@
       @foreach($pedidos as $pedido)
       <tr>
         <td>{{$pedido['id']}}</td>
-        <td>{{$pedido['mesa']}}</td>
-        <td>{{$pedido['produto']}}</td>
+        <td>{{$pedido['mesa_id']}}</td>
+        <td>{{$pedido['produto_id']}}</td>
         <td><a href="{{action('PedidoController@edit', $pedido['id'])}}" class="btn btn-warning">Edit</a></td>
         <td>
           <form action="{{action('ProdutoController@destroy', $pedido['id'])}}" method="post">
